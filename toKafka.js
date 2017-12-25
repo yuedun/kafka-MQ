@@ -8,8 +8,6 @@ console.log('连接kafka中');
 class toKafka {
 
     static produce(key, message, cb) {
-        console.log(4);
-
         let payloads = [
             { topic: 'test', messages: new KeyedMessage(key, message) }
         ];
@@ -23,7 +21,6 @@ class toKafka {
                 console.log("err:",err)
             }
             console.log("data:",data);
-            console.log("key+message:",key + message);
             cb(data);
         });
     }
