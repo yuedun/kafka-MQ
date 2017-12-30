@@ -1,7 +1,8 @@
 var kafka = require('kafka-node');
 var KeyedMessage = kafka.KeyedMessage;
 var Producer = kafka.Producer;
-var client = new kafka.Client('localhost:2181');
+// var client = new kafka.Client('localhost:2181');//连接zookeeper
+const client = new kafka.KafkaClient({kafkaHost: 'localhost:9092'});//多个地址用逗号分割
 var producer = new Producer(client);
 console.log('连接kafka中');
 
