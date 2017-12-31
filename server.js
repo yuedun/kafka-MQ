@@ -5,8 +5,8 @@
 
 var express = require('express');
 var app = express();
-var kafka = require('./toKafka.js');
-require('./getKafka');
+var Kafka = require('./producer.js');
+var kafka = new Kafka();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
