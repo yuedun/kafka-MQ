@@ -12,9 +12,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.post('/toKafka', function (req, res) {
+app.post('/send', function (req, res) {
     // 输出 JSON 格式
-    kafka.produce(req.body.key,req.body.message, function (result) {
+    kafka.produce(req.body.key, req.body.message, function (err, result) {
+        if (err) {
+            res.send(err)
+        }
         res.send(result)
     });
 });
