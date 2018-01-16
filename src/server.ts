@@ -5,16 +5,19 @@
 
 var express = require('express');
 var app = express();
-var Kafka = require('./producer.js');
+import Kafka from './producer';
 var kafka = new Kafka();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-app.post('/toKafka', function (req, res) {
+app.post('/send', function (req: any, res: any) {
     // 输出 JSON 格式
-    kafka.produce(req.body.key,req.body.message, function (result) {
+    kafka.produce(req.body.key, req.body.message, function (err: any, result: any) {
+        if (err) {
+            res.send(err)
+        }
         res.send(result)
     });
 });

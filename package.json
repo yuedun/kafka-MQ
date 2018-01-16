@@ -10,8 +10,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "kafka-node": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.19",
+    "@types/kafka-node": "^2.0.4",
+    "@types/request": "^2.0.11"
   }
 }
