@@ -4,4 +4,7 @@ exports.kafkaMQ = {
     kafka: 'ip:9092',
     zookeeper: 'ip:2181'
 };
-exports.elastisseacher = "url";
+exports.JavaServiceApi = {
+    elastisseacher: "http://ip:poort",
+    studentMsg: "http://ip:poort",
+};
