@@ -36,7 +36,7 @@ consumer.on('message', function (message: Message) {
     let msgObj: ArrangeLesson = JSON.parse(message.value);
 
     //elasticsearch记录消费信息
-    myRequest(JavaServiceApi.elastisseacher + '/arrange_lesson/first/', message);
+    myRequest(JavaServiceApi.elastisseacher + '/arrange_lesson/first/', message, false);
 
     //排课推送学生APP
     var stubody: {
@@ -57,7 +57,13 @@ consumer.on('message', function (message: Message) {
     myRequest(JavaServiceApi.studentMsg + '/services/studentsPushFacade/notification', stubody);
 });
 
-function myRequest(url: string, message: any): Promise<any> {
+/**
+ * 
+ * @param url 请求地址
+ * @param message 请求参数
+ * @param log 是否需要记录成功或错误日志
+ */
+function myRequest(url: string, message: any, log = true): Promise<any> {
     return new Promise((resolve, reject) => {
         HttpRequest.post({
             url,
@@ -70,14 +76,18 @@ function myRequest(url: string, message: any): Promise<any> {
             resolve(body)
         })
     }).then(data => {
-        return myRequest(JavaServiceApi.elastisseacher + '/request_log/success/', {
-            url,
-            message
-        });
+        if (log) {
+            return myRequest(JavaServiceApi.elastisseacher + '/request_log/success/', {
+                url,
+                message
+            });
+        }
     }).catch(err => {
-        myRequest(JavaServiceApi.elastisseacher + '/request_log/error/', {
-            url,
-            message
-        });
+        if (log) {
+            myRequest(JavaServiceApi.elastisseacher + '/request_log/error/', {
+                url,
+                message
+            });
+        }
     })
 }
