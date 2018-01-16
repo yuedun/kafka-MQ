@@ -12,6 +12,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
+app.get('/', function (req: any, res: any) {
+    res.send("ok")
+})
 app.post('/send', function (req: any, res: any) {
     // 输出 JSON 格式
     kafka.produce(req.body.key, req.body.message, function (err: any, result: any) {

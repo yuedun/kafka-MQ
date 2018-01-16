@@ -1,6 +1,9 @@
-export var kafkaMQ = {
-    kafka: 'ip:9092',
-    zookeeper: 'ip:2181'
+export const kafkaMQ = {
+    kafka: 'ip:poort',
+    zookeeper: 'ip:poort'
 }
 
-export const elastisseacher = "url"
+export const JavaServiceApi = {
+    elastisseacher: "http://ip:poort",
+    studentMsg: "http://ip:poort",//杨浩 学生APP排课推送
+} 
