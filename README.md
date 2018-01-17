@@ -32,3 +32,20 @@
 + 缺点： 需要更多的协调开发
 
 ![消息中心](http://hopefully.qiniudn.com/kafka-center.png)
+
+# docker镜像创建和运行
+
+切换到项目根目录，执行以下命令：
+
+> docker build -t kserver:1 .
+
+`-t`给镜像加名字和标签，`.`当前路径
+
+> docker run --name ks -ti -p 8081:8081 kserver:1
+`--name`起一个别名，`-ti`交互方式运行，`-p`绑定宿主机端口到容器端口
+
+## 提交镜像到docker hub
+docker hub创建repository：`yuedun/yddocker`
+
+> docker tag kserver:1 yuedun/yddocker:1
+> docker push yuedun/yddocker:1

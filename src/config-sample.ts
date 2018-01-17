@@ -1,6 +1,6 @@
 export const kafkaMQ = {
-    kafka: 'ip:poort',
-    zookeeper: 'ip:poort'
+    kafka: 'ip:9092',
+    zookeeper: 'ip:2181'
 }
 
 export const JavaServiceApi = {
