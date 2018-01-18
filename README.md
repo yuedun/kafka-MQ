@@ -49,3 +49,6 @@ docker hub创建repository：`yuedun/yddocker`
 
 > docker tag kserver:1 yuedun/yddocker:1
 > docker push yuedun/yddocker:1
+
+docker run --name ks -ti -p 8081:8081 yuedun/yddocker:2 node dest/server.js
+docker run --name ks2 -ti yuedun/yddocker:2 node dest/consumer.js

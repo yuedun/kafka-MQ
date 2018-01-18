@@ -7,6 +7,7 @@ var express = require('express');
 var app = express();
 import Kafka from './producer';
 var kafka = new Kafka();
+import * as consumer from './consumer';
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
