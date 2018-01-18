@@ -49,3 +49,16 @@ docker hub创建repository：`yuedun/yddocker`
 
 > docker tag kserver:1 yuedun/yddocker:1
 > docker push yuedun/yddocker:1
+
+docker run --name ks -ti -p 8081:8081 yuedun/yddocker:2 node dest/server.js
+docker run --name ks2 -ti yuedun/yddocker:2 node dest/consumer.js
+或
+
+docker run --name ks -d -p 8081:8081 kser:pm2 pm2-runtime dest/server.js
+docker exec -ti ks /bin/sh
+和
+docker run --name ks2 -d kser:pm2 pm2-runtime dest/consumer.js
+docker exec -ti ks2 /bin/sh
+
+进入后台运行的docker内
+docker exec -ti ks /bin/sh
