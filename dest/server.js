@@ -15,6 +15,15 @@ app.use(bodyParser.urlencoded({
 app.get('/', function (req, res) {
     res.send("ok");
 });
+/**
+ * 测试在docker中的pm2是否有用
+ */
+app.get('/err', function (req, res) {
+    if (req.query.a == 1) {
+        throw new Error("发生错误");
+    }
+    res.send("ok");
+});
 app.post('/send', function (req, res) {
     // 输出 JSON 格式
     kafka.produce(req.body.key, req.body.message, function (err, result) {
