@@ -2,7 +2,6 @@ import { Consumer, Client, Message } from 'kafka-node';
 import * as HttpRequest from 'request';
 import * as Promise from 'bluebird';
 import { kafkaMQ, JavaServiceApi } from './config';
-import { resolve, reject } from 'bluebird';
 
 export function runConsumer() {
     const client = new Client(kafkaMQ.zookeeper),
@@ -34,7 +33,7 @@ export function runConsumer() {
         teacherId: number;
     }
     consumer.on('message', function (message: Message) {
-        let msgObj: ArrangeLesson = JSON.parse(message.value);
+        let msgObj: ArrangeLesson = JSON.parse(<string>message.value);
         console.log(msgObj);
         
         //elasticsearch记录消费信息
